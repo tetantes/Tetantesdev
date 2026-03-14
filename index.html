@@ -7,19 +7,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Cursor -->
     <div class="cursor" id="cursor"></div>
     <div class="cursor-dot" id="cursorDot"></div>
-
-    <!-- Noise overlay -->
     <div class="noise"></div>
 
-    <!-- Nav -->
-    <nav class="nav">
+    <nav class="nav" id="nav">
         <div class="nav-logo">TET<span>ANTES</span></div>
         <div class="nav-links">
             <a href="#projects">Projects</a>
@@ -29,7 +26,6 @@
         </div>
     </nav>
 
-    <!-- Hero -->
     <section class="hero">
         <div class="hero-bg">
             <div class="grid-lines"></div>
@@ -44,7 +40,7 @@
                 <span class="line">BOTS THAT</span>
                 <span class="line accent">WORK.</span>
             </h1>
-            <p class="hero-sub">Automation • Monetization • Mini Apps • Full Systems</p>
+            <p class="hero-sub">Automation • Monetization • Mini Apps • Community Management</p>
             <div class="hero-btns">
                 <a href="#projects" class="btn-primary">View Projects</a>
                 <a href="#contact" class="btn-ghost">Get in Touch →</a>
@@ -68,14 +64,12 @@
         </div>
     </section>
 
-    <!-- Projects -->
     <section class="section" id="projects">
         <div class="section-header">
             <span class="section-tag">✦ WORK</span>
             <h2>Selected Projects</h2>
         </div>
         <div class="projects-grid">
-
             <div class="project-card featured">
                 <div class="project-num">01</div>
                 <div class="project-info">
@@ -85,87 +79,64 @@
                         <span>Mini App</span>
                     </div>
                     <h3>NotCoin Miner PRO</h3>
-                    <p>Automated mining bot with hourly payouts, referral system, channel membership verification, and integrated Monetag ad monetization via custom Mini App.</p>
-                    <div class="project-tech">TBC · TPY · Netlify · Monetag</div>
+                    <p>Automated mining bot with hourly payouts, referral system, channel membership verification, and integrated ad monetization via custom Telegram Mini App.</p>
+                    <div class="project-tech">Python · Telegram API · Netlify</div>
                 </div>
                 <div class="project-icon">⛏️</div>
             </div>
-
             <div class="project-card">
                 <div class="project-num">02</div>
                 <div class="project-info">
-                    <div class="project-tags">
-                        <span>Investment</span>
-                        <span>Finance</span>
-                    </div>
+                    <div class="project-tags"><span>Investment</span><span>Finance</span></div>
                     <h3>SmartYield</h3>
-                    <p>Full investment platform bot with deposit/withdrawal system, daily income payouts, referral commissions, and admin approval flow.</p>
-                    <div class="project-tech">TBC · TPY · Nigerian Banking</div>
+                    <p>Full investment platform with deposit/withdrawal system, daily income payouts, referral commissions, and admin approval flow.</p>
+                    <div class="project-tech">Python · Telegram API · Banking</div>
                 </div>
                 <div class="project-icon">💰</div>
             </div>
-
             <div class="project-card">
                 <div class="project-num">03</div>
                 <div class="project-info">
-                    <div class="project-tags">
-                        <span>Content</span>
-                        <span>Inline Mode</span>
-                    </div>
-                    <h3>Post Bot Clone</h3>
-                    <p>Full @PostBot clone with rich formatting preservation, custom button builder, inline sharing to any chat, and multi-language support.</p>
-                    <div class="project-tech">TBC · TPY · Inline API</div>
+                    <div class="project-tags"><span>Content</span><span>Inline Mode</span></div>
+                    <h3>Post Bot</h3>
+                    <p>Rich post creation bot with full formatting preservation, custom button builder, and inline sharing to any chat.</p>
+                    <div class="project-tech">Python · Telegram Inline API</div>
                 </div>
                 <div class="project-icon">📝</div>
             </div>
-
             <div class="project-card">
                 <div class="project-num">04</div>
                 <div class="project-info">
-                    <div class="project-tags">
-                        <span>Group Tool</span>
-                        <span>Moderation</span>
-                    </div>
+                    <div class="project-tags"><span>Group Tool</span><span>Moderation</span></div>
                     <h3>Group Manager</h3>
-                    <p>All-in-one group management bot with anti-spam, anti-flood, link blocking, keyword filters, welcome messages, warn/mute/ban system.</p>
-                    <div class="project-tech">TBC · TPY · Webhook</div>
+                    <p>All-in-one group management with anti-spam, anti-flood, link blocking, welcome messages, warn/mute/ban system.</p>
+                    <div class="project-tech">Python · Telegram API · Webhooks</div>
                 </div>
                 <div class="project-icon">🛡️</div>
             </div>
-
             <div class="project-card">
                 <div class="project-num">05</div>
                 <div class="project-info">
-                    <div class="project-tags">
-                        <span>Mini App</span>
-                        <span>Node.js</span>
-                        <span>Web3</span>
-                    </div>
+                    <div class="project-tags"><span>Mini App</span><span>Node.js</span><span>Web3</span></div>
                     <h3>GoldTask</h3>
-                    <p>Telegram Mini App for task-based earnings. Built with Node.js backend, Supabase database, Netlify hosting, and full TON wallet integration.</p>
+                    <p>Telegram Mini App for task-based earnings with Node.js backend, Supabase database, and full TON wallet integration.</p>
                     <div class="project-tech">Node.js · Supabase · Netlify · TON</div>
                 </div>
                 <div class="project-icon">🏆</div>
             </div>
-
             <div class="project-card">
                 <div class="project-num">06</div>
                 <div class="project-info">
-                    <div class="project-tags">
-                        <span>Referral</span>
-                        <span>Contest</span>
-                    </div>
+                    <div class="project-tags"><span>Referral</span><span>Contest</span></div>
                     <h3>Referral Contest Bot</h3>
-                    <p>Verification-based referral contest system with leaderboard, username tracking, multi-level rewards, and real-time admin panel.</p>
-                    <div class="project-tech">TBC · TPY · Leaderboard</div>
+                    <p>Verification-based referral contest with leaderboard, username tracking, multi-level rewards, and real-time admin panel.</p>
+                    <div class="project-tech">Python · Telegram API · Leaderboard</div>
                 </div>
                 <div class="project-icon">🎯</div>
             </div>
-
         </div>
     </section>
 
-    <!-- Skills -->
     <section class="section dark" id="skills">
         <div class="section-header">
             <span class="section-tag">✦ STACK</span>
@@ -175,22 +146,20 @@
             <div class="skill-group">
                 <h4>Bot Development</h4>
                 <div class="skill-items">
-                    <span>TeleBot Creator (TBC)</span>
-                    <span>TPY Language</span>
+                    <span>Python</span>
                     <span>Telegram Bot API</span>
                     <span>Inline Mode</span>
                     <span>Webhooks</span>
-                    <span>Mini Apps</span>
+                    <span>Mini Apps (WebApp)</span>
                 </div>
             </div>
             <div class="skill-group">
                 <h4>Backend & Database</h4>
                 <div class="skill-items">
                     <span>Node.js</span>
-                    <span>Python</span>
                     <span>Supabase</span>
                     <span>REST APIs</span>
-                    <span>Webhook Systems</span>
+                    <span>Payment Integration</span>
                 </div>
             </div>
             <div class="skill-group">
@@ -203,23 +172,22 @@
                 </div>
             </div>
             <div class="skill-group">
-                <h4>Monetization</h4>
+                <h4>Community & Growth</h4>
                 <div class="skill-items">
-                    <span>Monetag Ads</span>
-                    <span>Link Shorteners</span>
-                    <span>TON Payments</span>
-                    <span>Bank Transfer Systems</span>
+                    <span>Group Moderation</span>
+                    <span>Reply Guy Strategy</span>
+                    <span>Community Management</span>
+                    <span>Ad Monetization</span>
                     <span>Referral Systems</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services -->
     <section class="section" id="services">
         <div class="section-header">
             <span class="section-tag">✦ SERVICES</span>
-            <h2>What I Can Build For You</h2>
+            <h2>What I Can Do For You</h2>
         </div>
         <div class="services-list">
             <div class="service-item">
@@ -249,8 +217,16 @@
             <div class="service-item">
                 <span class="service-icon">🛡️</span>
                 <div class="service-info">
-                    <h3>Group Management Systems</h3>
-                    <p>Advanced moderation bots for communities — anti-spam, filters, welcome flows, member management, analytics.</p>
+                    <h3>Group Moderation & Management</h3>
+                    <p>I personally moderate and manage your Telegram community — keeping it clean, active, and growing. Anti-spam, member engagement, rule enforcement.</p>
+                </div>
+                <span class="service-arrow">→</span>
+            </div>
+            <div class="service-item">
+                <span class="service-icon">💬</span>
+                <div class="service-info">
+                    <h3>Reply Guy & Community Growth</h3>
+                    <p>Strategic engagement in your target communities — reply guy services, channel growth tactics, organic community building for crypto and tech projects.</p>
                 </div>
                 <span class="service-arrow">→</span>
             </div>
@@ -265,21 +241,19 @@
         </div>
     </section>
 
-    <!-- Contact -->
     <section class="section contact-section" id="contact">
         <div class="contact-inner">
             <div class="contact-glow"></div>
             <span class="section-tag">✦ LET'S BUILD</span>
-            <h2>Got a project in mind?</h2>
+            <h2>Got a project<br>in mind?</h2>
             <p>Tell me what you need. I'll build it.</p>
-            <a href="https://t.me/Tetantes" target="_blank" class="contact-btn">
+            <a href="https://t.me/Ademuyiwa2017" target="_blank" class="contact-btn" id="contactBtn">
                 Message me on Telegram
-                <span>→</span>
+                <span class="btn-arrow-span">→</span>
             </a>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-logo">TETANTES</div>
         <p>© 2025 Tetantes · Telegram Bot Developer</p>
