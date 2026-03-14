@@ -1,21 +1,24 @@
+// ===== FORCE DARK IMMEDIATELY =====
+document.documentElement.style.background = '#080808';
+document.body.style.background = '#080808';
+
 // ===== TELEGRAM WEBAPP DETECTION =====
-const isTelegram = window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initData !== '';
+const isTelegram = !!(window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initData);
 
 if (isTelegram) {
     const tg = window.Telegram.WebApp;
     tg.ready();
     tg.expand();
+
+    // Force dark — DO NOT use tg.themeParams
+    document.documentElement.style.setProperty('background', '#080808', 'important');
+    document.body.style.setProperty('background', '#080808', 'important');
     document.body.classList.add('tg-mode');
 
-    // Match Telegram theme
-    document.documentElement.style.setProperty('--bg', tg.themeParams.bg_color || '#080808');
+    // Start auto scroll after 2s
+    setTimeout(startAutoScroll, 2000);
 
-    // Start auto-scroll after page loads
-    window.addEventListener('load', () => {
-        setTimeout(startAutoScroll, 2000);
-    });
 } else {
-    // Browser mode — enable custom cursor
     initCursor();
 }
 
@@ -23,9 +26,7 @@ if (isTelegram) {
 function initCursor() {
     const cursor = document.getElementById('cursor');
     const cursorDot = document.getElementById('cursorDot');
-
-    let mouseX = 0, mouseY = 0;
-    let cursorX = 0, cursorY = 0;
+    let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
 
     document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
@@ -45,20 +46,20 @@ function initCursor() {
 
     document.querySelectorAll('a, button, .project-card, .service-item').forEach(el => {
         el.addEventListener('mouseenter', () => {
-            cursor.style.transform = 'translate(-50%, -50%) scale(1.8)';
+            cursor.style.transform = 'translate(-50%,-50%) scale(1.8)';
             cursor.style.background = 'rgba(200,241,53,0.1)';
         });
         el.addEventListener('mouseleave', () => {
-            cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+            cursor.style.transform = 'translate(-50%,-50%) scale(1)';
             cursor.style.background = 'transparent';
         });
     });
 }
 
-// ===== AUTO SCROLL (Telegram mode) =====
+// ===== AUTO SCROLL =====
 let autoScrollActive = false;
 let autoScrollRAF = null;
-let scrollSpeed = 0.6; // px per frame — slow and smooth
+const scrollSpeed = 2.5;
 
 function startAutoScroll() {
     if (autoScrollActive) return;
@@ -66,23 +67,18 @@ function startAutoScroll() {
 
     function scrollStep() {
         const maxScroll = document.body.scrollHeight - window.innerHeight;
-        const current = window.scrollY;
-
-        if (current >= maxScroll - 5) {
-            // Reached bottom — trigger flicker
+        if (window.scrollY >= maxScroll - 5) {
             autoScrollActive = false;
             triggerFlicker();
             return;
         }
-
         window.scrollBy(0, scrollSpeed);
         autoScrollRAF = requestAnimationFrame(scrollStep);
     }
-
     autoScrollRAF = requestAnimationFrame(scrollStep);
 }
 
-// Pause auto-scroll if user touches screen
+// Pause on touch
 document.addEventListener('touchstart', () => {
     if (autoScrollActive) {
         autoScrollActive = false;
@@ -90,29 +86,21 @@ document.addEventListener('touchstart', () => {
     }
 }, { passive: true });
 
-// ===== FLICKER EFFECT =====
+// ===== FLICKER =====
 function triggerFlicker() {
     const btn = document.getElementById('contactBtn');
     if (!btn) return;
-
-    // Scroll button into view smoothly
     btn.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
     setTimeout(() => {
         btn.classList.add('flickering');
-
-        // Remove class after animation so it can re-trigger
-        btn.addEventListener('animationend', () => {
-            btn.classList.remove('flickering');
-        }, { once: true });
+        btn.addEventListener('animationend', () => btn.classList.remove('flickering'), { once: true });
     }, 600);
 }
 
 // ===== SCROLL REVEAL =====
-const reveals = document.querySelectorAll(
-    '.project-card, .skill-group, .service-item, .section-header'
-);
-reveals.forEach(el => el.classList.add('reveal'));
+document.querySelectorAll('.project-card, .skill-group, .service-item, .section-header').forEach(el => {
+    el.classList.add('reveal');
+});
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -123,14 +111,13 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.1 });
 
-reveals.forEach(el => observer.observe(el));
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Stagger grid children
+// Stagger grids
 const gridObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            const children = entry.target.querySelectorAll('.reveal');
-            children.forEach((child, i) => {
+            entry.target.querySelectorAll('.reveal').forEach((child, i) => {
                 setTimeout(() => child.classList.add('visible'), i * 100);
             });
             gridObserver.unobserve(entry.target);
@@ -138,25 +125,20 @@ const gridObserver = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.05 });
 
-document.querySelectorAll('.projects-grid, .skills-grid, .services-list').forEach(el => {
-    gridObserver.observe(el);
-});
+document.querySelectorAll('.projects-grid, .skills-grid, .services-list').forEach(el => gridObserver.observe(el));
 
-// ===== NAV SCROLL SHRINK =====
+// ===== NAV SHRINK =====
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        nav.style.padding = isTelegram ? '12px 24px' : '16px 48px';
-    } else {
-        nav.style.padding = isTelegram ? '14px 24px' : '24px 48px';
-    }
+    nav.style.padding = window.scrollY > 50
+        ? (isTelegram ? '12px 24px' : '16px 48px')
+        : (isTelegram ? '14px 24px' : '24px 48px');
 });
 
-// ===== SMOOTH ANCHOR SCROLL =====
+// ===== SMOOTH ANCHOR =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
-        // Stop auto-scroll when user taps a link
         autoScrollActive = false;
         if (autoScrollRAF) cancelAnimationFrame(autoScrollRAF);
         const target = document.querySelector(this.getAttribute('href'));
