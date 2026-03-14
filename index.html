@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="dark">
     <title>Tetantes — Telegram Bot Developer</title>
-    <!-- Force dark BEFORE anything else loads -->
-    <style>
-        html, body { background: #080808 !important; color: #f0ede8 !important; }
-    </style>
+    <style>html,body{background:#080808!important;color:#f0ede8!important;}</style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
@@ -17,33 +14,47 @@
 </head>
 <body>
 
+    <!-- Progress bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Cursor -->
     <div class="cursor" id="cursor"></div>
     <div class="cursor-dot" id="cursorDot"></div>
+
+    <!-- Noise -->
     <div class="noise"></div>
 
+    <!-- Particles -->
+    <canvas class="particles-canvas" id="particlesCanvas"></canvas>
+
+    <!-- Nav -->
     <nav class="nav" id="nav">
         <div class="nav-logo">TET<span>ANTES</span></div>
         <div class="nav-links">
-            <a href="#projects">Projects</a>
-            <a href="#skills">Skills</a>
-            <a href="#services">Services</a>
+            <a href="#projects" data-section="projects">Projects</a>
+            <a href="#skills" data-section="skills">Skills</a>
+            <a href="#services" data-section="services">Services</a>
             <a href="#contact" class="nav-cta">Hire Me</a>
         </div>
     </nav>
 
-    <section class="hero">
+    <!-- Hero -->
+    <section class="hero" id="hero">
         <div class="hero-bg">
             <div class="grid-lines"></div>
             <div class="glow g1"></div>
             <div class="glow g2"></div>
         </div>
         <div class="hero-content">
-            <div class="hero-tag">Available for work ✦</div>
+            <div class="hero-tag">
+                <span class="tag-dot"></span>
+                <span id="heroGreeting">Available for work ✦</span>
+            </div>
             <h1 class="hero-title">
-                <span class="line">I BUILD</span>
-                <span class="line accent">TELEGRAM</span>
-                <span class="line">BOTS THAT</span>
-                <span class="line accent">WORK.</span>
+                <span class="line" id="typeLine1"></span>
+                <span class="line accent" id="typeLine2"></span>
+                <span class="line" id="typeLine3"></span>
+                <span class="line accent" id="typeLine4"></span>
             </h1>
             <p class="hero-sub">Automation • Monetization • Mini Apps • Community Management</p>
             <div class="hero-btns">
@@ -53,41 +64,41 @@
         </div>
         <div class="hero-stats">
             <div class="stat">
-                <span class="stat-num">10+</span>
+                <span class="stat-num" data-target="10" data-suffix="+">0</span>
                 <span class="stat-label">Bots Built</span>
             </div>
             <div class="stat-divider"></div>
             <div class="stat">
-                <span class="stat-num">3M+</span>
+                <span class="stat-num" data-target="3" data-suffix="M+">0</span>
                 <span class="stat-label">Users Reached</span>
             </div>
             <div class="stat-divider"></div>
             <div class="stat">
-                <span class="stat-num">100%</span>
+                <span class="stat-num" data-target="100" data-suffix="%">0</span>
                 <span class="stat-label">Custom Built</span>
             </div>
         </div>
     </section>
 
+    <!-- Projects -->
     <section class="section" id="projects">
-        <div class="section-header">
+        <div class="section-header reveal">
             <span class="section-tag">✦ WORK</span>
             <h2>Selected Projects</h2>
         </div>
         <div class="projects-grid">
-            <div class="project-card featured">
+            <div class="project-card featured reveal">
                 <div class="project-num">01</div>
                 <div class="project-info">
-                    <div class="project-tags">
-                        <span>Mining Bot</span><span>Monetization</span><span>Mini App</span>
-                    </div>
+                    <div class="project-tags"><span>Mining Bot</span><span>Monetization</span><span>Mini App</span></div>
                     <h3>NotCoin Miner PRO</h3>
                     <p>Automated mining bot with hourly payouts, referral system, channel membership verification, and integrated ad monetization via custom Telegram Mini App.</p>
                     <div class="project-tech">Python · Telegram API · Netlify</div>
                 </div>
                 <div class="project-icon">⛏️</div>
+                <div class="card-glow"></div>
             </div>
-            <div class="project-card">
+            <div class="project-card reveal">
                 <div class="project-num">02</div>
                 <div class="project-info">
                     <div class="project-tags"><span>Investment</span><span>Finance</span></div>
@@ -96,8 +107,9 @@
                     <div class="project-tech">Python · Telegram API · Banking</div>
                 </div>
                 <div class="project-icon">💰</div>
+                <div class="card-glow"></div>
             </div>
-            <div class="project-card">
+            <div class="project-card reveal">
                 <div class="project-num">03</div>
                 <div class="project-info">
                     <div class="project-tags"><span>Content</span><span>Inline Mode</span></div>
@@ -106,8 +118,9 @@
                     <div class="project-tech">Python · Telegram Inline API</div>
                 </div>
                 <div class="project-icon">📝</div>
+                <div class="card-glow"></div>
             </div>
-            <div class="project-card">
+            <div class="project-card reveal">
                 <div class="project-num">04</div>
                 <div class="project-info">
                     <div class="project-tags"><span>Group Tool</span><span>Moderation</span></div>
@@ -116,8 +129,9 @@
                     <div class="project-tech">Python · Telegram API · Webhooks</div>
                 </div>
                 <div class="project-icon">🛡️</div>
+                <div class="card-glow"></div>
             </div>
-            <div class="project-card">
+            <div class="project-card reveal">
                 <div class="project-num">05</div>
                 <div class="project-info">
                     <div class="project-tags"><span>Mini App</span><span>Node.js</span><span>Web3</span></div>
@@ -126,8 +140,9 @@
                     <div class="project-tech">Node.js · Supabase · Netlify · TON</div>
                 </div>
                 <div class="project-icon">🏆</div>
+                <div class="card-glow"></div>
             </div>
-            <div class="project-card">
+            <div class="project-card reveal">
                 <div class="project-num">06</div>
                 <div class="project-info">
                     <div class="project-tags"><span>Referral</span><span>Contest</span></div>
@@ -136,64 +151,53 @@
                     <div class="project-tech">Python · Telegram API · Leaderboard</div>
                 </div>
                 <div class="project-icon">🎯</div>
+                <div class="card-glow"></div>
             </div>
         </div>
     </section>
 
+    <!-- Skills -->
     <section class="section dark" id="skills">
-        <div class="section-header">
+        <div class="section-header reveal">
             <span class="section-tag">✦ STACK</span>
             <h2>What I Work With</h2>
         </div>
         <div class="skills-grid">
-            <div class="skill-group">
+            <div class="skill-group reveal">
                 <h4>Bot Development</h4>
                 <div class="skill-items">
-                    <span>Python</span>
-                    <span>Telegram Bot API</span>
-                    <span>Inline Mode</span>
-                    <span>Webhooks</span>
-                    <span>Mini Apps (WebApp)</span>
+                    <span>Python</span><span>Telegram Bot API</span><span>Inline Mode</span><span>Webhooks</span><span>Mini Apps (WebApp)</span>
                 </div>
             </div>
-            <div class="skill-group">
+            <div class="skill-group reveal">
                 <h4>Backend & Database</h4>
                 <div class="skill-items">
-                    <span>Node.js</span>
-                    <span>Supabase</span>
-                    <span>REST APIs</span>
-                    <span>Payment Integration</span>
+                    <span>Node.js</span><span>Supabase</span><span>REST APIs</span><span>Payment Integration</span>
                 </div>
             </div>
-            <div class="skill-group">
+            <div class="skill-group reveal">
                 <h4>Frontend & Deploy</h4>
                 <div class="skill-items">
-                    <span>HTML / CSS / JS</span>
-                    <span>Netlify</span>
-                    <span>Responsive Design</span>
-                    <span>Telegram WebApp SDK</span>
+                    <span>HTML / CSS / JS</span><span>Netlify</span><span>Responsive Design</span><span>Telegram WebApp SDK</span>
                 </div>
             </div>
-            <div class="skill-group">
+            <div class="skill-group reveal">
                 <h4>Community & Growth</h4>
                 <div class="skill-items">
-                    <span>Group Moderation</span>
-                    <span>Reply Guy Strategy</span>
-                    <span>Community Management</span>
-                    <span>Ad Monetization</span>
-                    <span>Referral Systems</span>
+                    <span>Group Moderation</span><span>Reply Guy Strategy</span><span>Community Management</span><span>Ad Monetization</span><span>Referral Systems</span>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Services -->
     <section class="section" id="services">
-        <div class="section-header">
+        <div class="section-header reveal">
             <span class="section-tag">✦ SERVICES</span>
             <h2>What I Can Do For You</h2>
         </div>
         <div class="services-list">
-            <div class="service-item">
+            <div class="service-item reveal">
                 <span class="service-icon">🤖</span>
                 <div class="service-info">
                     <h3>Custom Telegram Bots</h3>
@@ -201,7 +205,7 @@
                 </div>
                 <span class="service-arrow">→</span>
             </div>
-            <div class="service-item">
+            <div class="service-item reveal">
                 <span class="service-icon">💸</span>
                 <div class="service-info">
                     <h3>Monetized Bot Systems</h3>
@@ -209,7 +213,7 @@
                 </div>
                 <span class="service-arrow">→</span>
             </div>
-            <div class="service-item">
+            <div class="service-item reveal">
                 <span class="service-icon">📱</span>
                 <div class="service-info">
                     <h3>Telegram Mini Apps</h3>
@@ -217,23 +221,23 @@
                 </div>
                 <span class="service-arrow">→</span>
             </div>
-            <div class="service-item">
+            <div class="service-item reveal">
                 <span class="service-icon">🛡️</span>
                 <div class="service-info">
                     <h3>Group Moderation & Management</h3>
-                    <p>I personally moderate and manage your Telegram community — keeping it clean, active, and growing. Anti-spam, member engagement, rule enforcement.</p>
+                    <p>I personally moderate and manage your Telegram community — keeping it clean, active, and growing.</p>
                 </div>
                 <span class="service-arrow">→</span>
             </div>
-            <div class="service-item">
+            <div class="service-item reveal">
                 <span class="service-icon">💬</span>
                 <div class="service-info">
                     <h3>Reply Guy & Community Growth</h3>
-                    <p>Strategic engagement in your target communities — reply guy services, channel growth tactics, organic community building for crypto and tech projects.</p>
+                    <p>Strategic engagement in your target communities — reply guy services, channel growth tactics, organic community building.</p>
                 </div>
                 <span class="service-arrow">→</span>
             </div>
-            <div class="service-item">
+            <div class="service-item reveal">
                 <span class="service-icon">🔧</span>
                 <div class="service-info">
                     <h3>Bot Fixes & Upgrades</h3>
@@ -244,23 +248,28 @@
         </div>
     </section>
 
+    <!-- Contact -->
     <section class="section contact-section" id="contact">
-        <div class="contact-inner">
+        <div class="contact-inner reveal">
             <div class="contact-glow"></div>
             <span class="section-tag">✦ LET'S BUILD</span>
             <h2>Got a project<br>in mind?</h2>
             <p>Tell me what you need. I'll build it.</p>
             <a href="https://t.me/Ademuyiwa2017" target="_blank" class="contact-btn" id="contactBtn">
                 Message me on Telegram
-                <span class="btn-arrow-span">→</span>
+                <span>→</span>
             </a>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-logo">TETANTES</div>
         <p>© 2025 Tetantes · Telegram Bot Developer</p>
     </footer>
+
+    <!-- Back to top -->
+    <button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
     <script src="script.js"></script>
 </body>
