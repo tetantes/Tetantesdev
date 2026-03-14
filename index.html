@@ -1,9 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background:#080808!important;color-scheme:dark!important;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
     <title>Tetantes — Telegram Bot Developer</title>
+    <!-- Force dark BEFORE anything else loads -->
+    <style>
+        html, body { background: #080808 !important; color: #f0ede8 !important; }
+    </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
@@ -74,9 +79,7 @@
                 <div class="project-num">01</div>
                 <div class="project-info">
                     <div class="project-tags">
-                        <span>Mining Bot</span>
-                        <span>Monetization</span>
-                        <span>Mini App</span>
+                        <span>Mining Bot</span><span>Monetization</span><span>Mini App</span>
                     </div>
                     <h3>NotCoin Miner PRO</h3>
                     <p>Automated mining bot with hourly payouts, referral system, channel membership verification, and integrated ad monetization via custom Telegram Mini App.</p>
