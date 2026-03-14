@@ -1,3 +1,6 @@
+/* Force dark theme always */
+:root { color-scheme: dark; }
+html { background: #080808 !important; }
 /* ===== RESET & BASE ===== */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
