@@ -59,7 +59,7 @@ function initCursor() {
 // ===== AUTO SCROLL =====
 let autoScrollActive = false;
 let autoScrollRAF = null;
-const scrollSpeed = 2.5;
+const scrollSpeed = 10;
 
 function startAutoScroll() {
     if (autoScrollActive) return;
